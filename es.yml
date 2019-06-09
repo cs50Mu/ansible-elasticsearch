@@ -1,0 +1,16 @@
+- name: Elasticsearch with custom configuration
+  hosts: passport-es
+  roles:
+    - role: ansible-elasticsearch
+  vars:
+# 用于一台机器部署多个es实例时来区分不同实例用的
+    es_instance_name: "node1"
+    es_data_dirs:
+      - "/data/lib/elasticsearch"
+    es_log_dir: "/data/log/elasticsearch"
+    es_config:
+      node.name: "{{ ansible_facts['hostname'] }}"
+      cluster.name: "passport-es"
+      network.host: [_eth0_, _local_]
+      discovery.zen.ping.unicast.hosts: ["10.1.0.73", "10.1.0.48", "10.1.0.235"]
+    es_heap_size: 6g
