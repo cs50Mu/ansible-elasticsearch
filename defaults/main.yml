@@ -1,8 +1,8 @@
 ---
 es_major_version: "6.x"
-es_version: "6.6.0"
+es_version: "6.7.1"
 es_use_snapshot_release: false
-es_enable_xpack: true
+es_enable_xpack: false
 es_package_name: "elasticsearch"
 es_version_lock: false
 es_use_repository: true
@@ -24,8 +24,8 @@ es_config: {}
 es_config_log4j2: log4j2.properties.j2
 #Need to provide default directories
 es_pid_dir: "/var/run/elasticsearch"
-es_data_dirs: "/var/lib/elasticsearch"
-es_log_dir: "/var/log/elasticsearch"
+es_data_dirs: "/data/lib/elasticsearch"
+es_log_dir: "/data/log/elasticsearch"
 es_action_auto_create_index: true
 es_max_open_files: 65536
 es_max_threads: "{{ 2048 if ( es_version is version_compare('6.0.0', '<')) else 8192 }}"

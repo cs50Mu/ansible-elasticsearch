@@ -8,7 +8,7 @@
 
 - name: Set the defaults here otherwise they can't be overriden in the same play if the role is called twice
   set_fact:
-    es_open_xpack: true
+    es_open_xpack: false
     es_install_xpack: false
     es_users_path: "users"
     es_xpack_conf_subdir: ""
@@ -25,7 +25,7 @@
 
 - name: If this is an older version we need to install X-Pack as a plugin and use a differet users command
   set_fact:
-    es_install_xpack: true
+    es_install_xpack: false
     es_xpack_users_command: "x-pack/users"
     es_xpack_conf_subdir: "/x-pack"
   when: 
